@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration
+    PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+	<session-factory>
+		<!-- 
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/michaeldemo</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password"></property>
+		 -->
+		 
+		 <!-- 
+		<property name="dialect">org.hibernate.dialect.HSQLDialect</property>
+		<property name="connection.driver_class">org.hsqldb.jdbc.JDBCDriver</property>
+		<property name="connection.url">jdbc:hsqldb:file:/Users/micmiu/no_sync/testdata/hsqldb/mydemo.db</property>
+		<property name="connection.username">sa</property>
+		<property name="connection.password"></property>
+		 -->
+		
+		<!-- 
+		<property name="dialect">org.hibernate.dialect.H2Dialect</property>
+		<property name="connection.driver_class">org.h2.Driver</property>
+		<property name="connection.url">jdbc:h2:~/no_sync/testdata/h2db/micmiu-demo;AUTO_SERVER=TRUE</property>
+		<property name="connection.username">sa</property>
+		<property name="connection.password"></property>
+		 -->
+		
+		
+		<property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
+		<property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+		<property name="connection.url">jdbc:oracle:thin:@192.168.6.40:1521:res</property>
+		<property name="connection.username">micmiu</property>
+		<property name="connection.password">111111</property>
+		<!-- 
+		<property name="connection.isolation">8</property>
+		 -->
+
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property>
+
+		<property name="current_session_context_class">thread</property>
+		<property name="hbm2ddl.auto">update</property>
+		
+		<!--  -->
+		<mapping class="com.micmiu.hibernate.demo.entity.Company" />
+		<mapping class="com.micmiu.hibernate.demo.entity.Employee" />
+		
+		<mapping class="com.micmiu.hibernate.demo.entity.Author" />
+		<mapping class="com.micmiu.hibernate.demo.entity.Contact" />
+		<mapping class="com.micmiu.hibernate.demo.entity.Course" />
+		<mapping class="com.micmiu.hibernate.demo.entity.Student" />
+		<mapping class="com.micmiu.hibernate.demo.entity.TreeNode" />
+		<mapping class="com.micmiu.hibernate.demo.entity.Menu" />
+		<mapping class="com.micmiu.hibernate.demo.entity.Permssion" />
+		<mapping class="com.micmiu.hibernate.demo.entity.Role" />
+		<mapping class="com.micmiu.hibernate.demo.entity.User" />
+		
+		<mapping class="com.micmiu.hibernate.demo.entity.BankAccount" />
+		
+	</session-factory>
+
+</hibernate-configuration>

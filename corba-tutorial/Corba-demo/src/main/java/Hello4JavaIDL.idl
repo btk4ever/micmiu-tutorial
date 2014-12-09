@@ -1,0 +1,22 @@
+/*
+ * IDL helloworld demo 
+ * author by micmiu.com
+ */
+module com
+{
+    module micmiu
+    {
+        module corba
+        {
+	        module javaidl
+	        {
+	         	module hello
+	       	 	{
+					interface HelloService {
+						string sayHello(in string name);
+					};
+				};
+			};
+        };
+    };
+};

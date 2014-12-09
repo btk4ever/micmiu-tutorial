@@ -1,0 +1,45 @@
+#include "orb.idl"
+
+module javax {
+	module ejb {
+
+	    valuetype CreateException{
+	    };
+
+		#pragma ID CreateException "RMI:javax.ejb.CreateException:C541A83F0F5CCDCE:575FB6C03D49AD6A"
+
+		exception CreateEx {
+    
+        	CreateException value;
+    
+    	};
+
+	};
+};
+
+module com {
+	module micmiu {
+		module ejb2corbacom
+javax {
+
+		    interface HelloWorldRemote{
+		    
+		        ::CORBA::WStringValue sayHello(
+		            in ::CORBA::WStringValue arg0 );
+		    
+		    };
+
+			#pragma ID HelloWorldRemote "RMI:com.micmiu.ejb2x.HelloWorldRemote:0000000000000000"
+
+			interface HelloWorldHome {
+	    
+	        ::com::micmiu::ejb2x::HelloWorldRemote create( ) raises (
+	            ::javax::ejb::CreateEx );
+
+	    	};
+
+			#pragma ID HelloWorldHome "RMI:com.micmiu.ejb2x.HelloWorldHome:0000000000000000"
+
+		};
+	};
+};

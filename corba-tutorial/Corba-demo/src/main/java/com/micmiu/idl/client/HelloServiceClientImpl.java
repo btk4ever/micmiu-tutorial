@@ -56,16 +56,14 @@ class HelloServiceClientImpl {
 
 		// ---- Uncomment below to enable Naming Service access. ----
 		// 启用命名服务
-//		 org.omg.CORBA.Object ncobj =
-//		 orb.string_to_object("corbaloc::1.2@127.0.0.1:1234/NameService");
-//		 NamingContextExt nc = NamingContextExtHelper.narrow(ncobj);
-//		 org.omg.CORBA.Object obj = nc.resolve_str("MyServerObject");
+		 org.omg.CORBA.Object ncobj =orb.string_to_object("corbaloc::1.2@127.0.0.1:12345/NameService");
+		 NamingContextExt nc = NamingContextExtHelper.narrow(ncobj);
+		 org.omg.CORBA.Object obj = nc.resolve_str("MyServerObject");
 
 		// ior 基本服务
-		LineNumberReader input = new LineNumberReader(new FileReader(
-				"server.ior"));
-		String ior = input.readLine();
-		org.omg.CORBA.Object obj = orb.string_to_object(ior);
+//		LineNumberReader input = new LineNumberReader(new FileReader("server.ior"));
+//		String ior = input.readLine();
+//		org.omg.CORBA.Object obj = orb.string_to_object(ior);
 
 		target = com.micmiu.idl.hello.HelloServiceHelper.narrow(obj);
 	}

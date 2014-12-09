@@ -14,21 +14,18 @@ public class Server_AOMNew {
 	public static void main(String[] args) {
 
 		Properties props = System.getProperties();
-		//props.setProperty("org.omg.CORBA.ORBClass", "org.openorb.CORBA.ORB");
-		//props.setProperty("org.omg.CORBA.ORBSingletonClass", "org.openorb.CORBA.ORBSingleton");
 
-		// OpenORB 1.4.X
-		props.setProperty("org.omg.CORBA.ORBClass", "org.openorb.orb.core.ORB");
-		props.setProperty("org.omg.CORBA.ORBSingletonClass", "org.openorb.orb.core.ORBSingleton");
+		props.setProperty("org.omg.CORBA.ORBClass", "com.sun.corba.se.internal.POA.POAORB");
+		props.setProperty("org.omg.CORBA.ORBSingletonClass", "com.sun.corba.se.internal.corba.ORBSingleton");
 
 		//启动基础服务
-		startSimpleServer(args, props);
+		//startSimpleServer(args, props);
 
 		//启动命名服务
 //		if (null == args || args.length == 0) {
-//			args = new String[]{"-ORBInitialHost", "127.0.0.1", "-ORBInitialPort", "1234"};
+//			args = new String[]{"-ORBInitialHost", "127.0.0.1", "-ORBInitialPort", "12345"};
 //		}
-//		startNameService(args, props);
+		startNameService(args, props);
 
 	}
 

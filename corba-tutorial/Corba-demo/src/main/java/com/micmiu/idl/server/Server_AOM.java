@@ -18,12 +18,9 @@ public class Server_AOM {
 	public static void main(String[] args) {
 
 		Properties props = System.getProperties();
-		//props.setProperty("org.omg.CORBA.ORBClass", "org.openorb.CORBA.ORB");
-		//props.setProperty("org.omg.CORBA.ORBSingletonClass", "org.openorb.CORBA.ORBSingleton");
+		props.setProperty("org.omg.CORBA.ORBClass", "com.sun.corba.se.internal.POA.POAORB");
+		props.setProperty("org.omg.CORBA.ORBSingletonClass", "com.sun.corba.se.internal.corba.ORBSingleton");
 
-		// OpenORB 1.4.X
-		props.setProperty("org.omg.CORBA.ORBClass", "org.openorb.orb.core.ORB");
-		props.setProperty("org.omg.CORBA.ORBSingletonClass", "org.openorb.orb.core.ORBSingleton");
 		try {
 			// Initialize the ORB.
 			org.omg.CORBA.ORB orb = org.omg.CORBA.ORB.init(args, props);

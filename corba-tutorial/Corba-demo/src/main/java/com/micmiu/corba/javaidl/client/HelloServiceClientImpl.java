@@ -54,7 +54,7 @@ class HelloServiceClientImpl {
 		org.omg.CORBA.Object obj = nc.resolve_str("MyServerObject");
 
 		// IOR服务
-//		LineNumberReader input = new LineNumberReader(new FileReader("hello-javaidl-server.ior"));
+//		LineNumberReader input = new LineNumberReader(new FileReader("ior/hello-javaidl-server.ior"));
 //		String ior = input.readLine();
 //		org.omg.CORBA.Object obj = orb.string_to_object(ior);
 
@@ -78,14 +78,14 @@ class HelloServiceClientImpl {
 	}
 
 	/**
-	 * Test driver for HelloServiceClientImpl.
+	 * JavaIDL 模式
+	 * 测试客户端之前需要 启动监听 和服务端程序
+	 * 客户端运行 需要 +参数 -ORBInitialHost 127.0.0.1 -ORBInitialPort 1234
 	 *
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		try {
-			// 命名服务访问 +参数 -ORBInitialHost 127.0.0.1 -ORBInitialPort 12345
-
 			HelloServiceClientImpl test = new HelloServiceClientImpl(args);
 
 			// test.getORBInterface().operation1("A message in the bottle...");

@@ -13,6 +13,11 @@ import org.omg.PortableServer.POAHelper;
 import org.omg.PortableServer.ThreadPolicyValue;
 // import org.omg.PortableServer.LifespanPolicyValue;
 
+/**
+ * JavaIDL实现模式
+ * 应用运行之前需要先启动监听服务: orbd -ORBInitialPort 1234 -ORBInitialHost 127.0.0.1
+ * 运行服务端程序 + 参数 -ORBInitialHost 127.0.0.1 -ORBInitialPort 1234
+ */
 public class Server_AOM {
 
 	public static void main(String[] args) {
@@ -52,13 +57,13 @@ public class Server_AOM {
 			obj = poa.servant_to_reference(servant);
 
 			// ---- Uncomment below to enable Naming Service access. ----
-			// 命名服务 + 参数 -ORBInitialHost 127.0.0.1 -ORBInitialPort 12345
+			// 命名服务
 			org.omg.CORBA.Object ncobj = orb.resolve_initial_references("NameService");
 			NamingContextExt nc = NamingContextExtHelper.narrow(ncobj);
 			nc.bind(nc.to_name("MyServerObject"), obj);
 
 			// IOR服务
-//			PrintWriter ps = new PrintWriter(new FileOutputStream(new File("hello-javaidl-server.ior")));
+//			PrintWriter ps = new PrintWriter(new FileOutputStream(new File("ior/hello-javaidl-server.ior")));
 //			ps.println(orb.object_to_string(obj));
 //			ps.close();
 

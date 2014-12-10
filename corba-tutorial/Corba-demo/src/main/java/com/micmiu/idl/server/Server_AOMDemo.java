@@ -11,6 +11,9 @@ import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.util.Properties;
 
+/**
+ * 测试
+ */
 public class Server_AOMDemo {
 
 	public static void main(String[] args) {
@@ -18,8 +21,6 @@ public class Server_AOMDemo {
 		Properties props = System.getProperties();
 		props.setProperty("org.omg.CORBA.ORBClass", "org.openorb.orb.core.ORB");
 		props.setProperty("org.omg.CORBA.ORBSingletonClass", "org.openorb.orb.core.ORBSingleton");
-		// 启动命名服务需要的参数
-		//props.setProperty("ORBDefaultInitRef", "corbaloc::127.0.0.1:1234/NameService");
 
 		try {
 			// Initialize the ORB.

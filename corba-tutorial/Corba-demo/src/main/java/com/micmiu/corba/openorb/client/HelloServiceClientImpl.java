@@ -54,14 +54,15 @@ class HelloServiceClientImpl {
 
 		// ---- Uncomment below to enable Naming Service access. ----
 		// 命名服务
-//		org.omg.CORBA.Object ncobj = orb.resolve_initial_references("corbaloc::1.2@127.0.0.1:12345/NameService");
-//		NamingContextExt nc = NamingContextExtHelper.narrow(ncobj);
-//		org.omg.CORBA.Object obj = nc.resolve_str("MyServerObject");
+		// org.omg.CORBA.Object ncobj = orb.resolve_initial_references("NameService");
+		org.omg.CORBA.Object ncobj = orb.string_to_object("corbaloc::1.2@127.0.01:1234/NameService");
+		NamingContextExt nc = NamingContextExtHelper.narrow(ncobj);
+		org.omg.CORBA.Object obj = nc.resolve_str("MyServerObject");
 
 		// IOR 服务
-		LineNumberReader input = new LineNumberReader(new FileReader("hello-openorb-server.ior"));
-		String ior = input.readLine();
-		org.omg.CORBA.Object obj = orb.string_to_object(ior);
+//		LineNumberReader input = new LineNumberReader(new FileReader("ior/hello-openorb-server.ior"));
+//		String ior = input.readLine();
+//		org.omg.CORBA.Object obj = orb.string_to_object(ior);
 
 		target = com.micmiu.corba.openorb.hello.HelloServiceHelper.narrow(obj);
 	}
@@ -83,14 +84,16 @@ class HelloServiceClientImpl {
 	}
 
 	/**
-	 * Test driver for HelloServiceClientImpl.
+	 * penORB模式
+	 * 测试客户端之前需要 启动监听 和服务端程序
+	 * 如果是测试命名服务 需要配置命名服务地址: orb.string_to_object("corbaloc::1.2@127.0.01:1234/NameService")
 	 *
 	 * @param args
 	 */
 	public static void main(String[] args) {
 
 		try {
-			// 命名服务访问 +参数 -ORBInitialHost 127.0.0.1 -ORBInitialPort 12345
+
 			HelloServiceClientImpl test = new HelloServiceClientImpl();
 
 			// test.getORBInterface().operation1("A message in the bottle...");

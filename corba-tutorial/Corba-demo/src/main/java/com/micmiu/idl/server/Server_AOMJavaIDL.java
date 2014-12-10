@@ -9,7 +9,7 @@ import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.util.Properties;
 
-public class Server_AOMNew {
+public class Server_AOMJavaIDL {
 
 	public static void main(String[] args) {
 
@@ -89,7 +89,9 @@ public class Server_AOMNew {
 	}
 
 	/**
-	 * 启动命名服务
+	 * JavaIDL 模式启动命名服务
+	 * 应用运行之前需要先启动监听服务: orbd -ORBInitialPort 1234 -ORBInitialHost 127.0.0.1
+	 * 运行服务端程序 + 参数 -ORBInitialHost 127.0.0.1 -ORBInitialPort 1234
 	 *
 	 * @param args
 	 * @param props

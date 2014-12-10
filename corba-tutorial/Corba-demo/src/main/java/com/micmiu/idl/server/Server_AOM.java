@@ -15,6 +15,13 @@ import org.omg.PortableServer.ThreadPolicyValue;
 
 public class Server_AOM {
 
+	/**
+	 * JavaIDL 模式启动命名服务
+	 * 应用运行之前需要先启动监听服务: orbd -ORBInitialPort 1234 -ORBInitialHost 127.0.0.1
+	 * 运行服务端程序 + 参数 -ORBInitialHost 127.0.0.1 -ORBInitialPort 1234
+	 *
+	 * @param args
+	 */
 	public static void main(String[] args) {
 
 		Properties props = System.getProperties();
@@ -31,7 +38,7 @@ public class Server_AOM {
 
 			// Create policies for our persistent POA
 			org.omg.CORBA.Policy[] policies = {
-					poaRoot.create_lifespan_policy(LifespanPolicyValue.PERSISTENT),
+					//poaRoot.create_lifespan_policy(LifespanPolicyValue.PERSISTENT),
 					poaRoot.create_id_assignment_policy(IdAssignmentPolicyValue.USER_ID),
 					poaRoot.create_thread_policy(ThreadPolicyValue.ORB_CTRL_MODEL)
 			};
@@ -53,15 +60,15 @@ public class Server_AOM {
 			obj = poa.servant_to_reference(servant);
 
 			// ---- Uncomment below to enable Naming Service access. ----
-			//启用命名服务   +参数 -ORBInitialHost 127.0.0.1 -ORBInitialPort 1234
-//			org.omg.CORBA.Object ncobj = orb.resolve_initial_references("NameService");
-//			NamingContextExt nc = NamingContextExtHelper.narrow(ncobj);
-//			nc.bind(nc.to_name("MyServerObject"), obj);
+			//启用命名服务
+			org.omg.CORBA.Object ncobj = orb.resolve_initial_references("NameService");
+			NamingContextExt nc = NamingContextExtHelper.narrow(ncobj);
+			nc.bind(nc.to_name("MyServerObject"), obj);
 
 			//启用基本服务
-			PrintWriter ps = new PrintWriter(new FileOutputStream(new File("server.ior")));
-			ps.println(orb.object_to_string(obj));
-			ps.close();
+//			PrintWriter ps = new PrintWriter(new FileOutputStream(new File("server.ior")));
+//			ps.println(orb.object_to_string(obj));
+//			ps.close();
 
 			System.out.println("CORBA Server ready...");
 

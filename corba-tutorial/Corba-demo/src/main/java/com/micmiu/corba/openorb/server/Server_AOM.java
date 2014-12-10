@@ -15,6 +15,13 @@ import org.omg.PortableServer.ThreadPolicyValue;
 
 public class Server_AOM {
 
+	/**
+	 * OpenORB 模式
+	 * 命名服务运行之前需要先监听服务: %OPENORB_HOME%/NamingService/bin/ins -ORBPort=1234
+	 * 然后启动服务端: +参数 -ORBInitRef NameService=corbaloc::1.2@127.0.0.1:1234/NameService
+	 *
+	 * @param args
+	 */
 	public static void main(String[] args) {
 
 		Properties props = System.getProperties();
@@ -23,11 +30,10 @@ public class Server_AOM {
 		// OpenORB 1.4.X
 		props.setProperty("org.omg.CORBA.ORBClass", "org.openorb.orb.core.ORB");
 		props.setProperty("org.omg.CORBA.ORBSingletonClass", "org.openorb.orb.core.ORBSingleton");
-		//props.setProperty("ORBInitRef","corbaloc::1.2@localhost:12345/NameService");
 
 		try {
 			// Initialize the ORB.
-			org.omg.CORBA.ORB orb = org.omg.CORBA.ORB.init((String[])null, props);
+			org.omg.CORBA.ORB orb = org.omg.CORBA.ORB.init(args, props);
 
 			// get a reference to the root POA
 			org.omg.CORBA.Object obj = orb.resolve_initial_references("RootPOA");
@@ -57,13 +63,13 @@ public class Server_AOM {
 			obj = poa.servant_to_reference(servant);
 
 			// ---- Uncomment below to enable Naming Service access. ----
-			// 命名服务 +参数 -ORBInitialHost 127.0.0.1 -ORBInitialPort 12345
+			// 命名服务
 			org.omg.CORBA.Object ncobj = orb.resolve_initial_references("NameService");
 			NamingContextExt nc = NamingContextExtHelper.narrow(ncobj);
 			nc.bind(nc.to_name("MyServerObject"), obj);
 
 			//IOR 服务
-//			PrintWriter ps = new PrintWriter(new FileOutputStream(new File("hello-openorb-server.ior")));
+//			PrintWriter ps = new PrintWriter(new FileOutputStream(new File("ior/hello-openorb-server.ior")));
 //			ps.println(orb.object_to_string(obj));
 //			ps.close();
 

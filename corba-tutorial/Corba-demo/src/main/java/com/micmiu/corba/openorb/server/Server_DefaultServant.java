@@ -59,7 +59,7 @@ public class Server_DefaultServant {
 			// NamingContextExt nc = NamingContextExtHelper.narrow(ncobj);
 			// nc.bind(nc.to_name("MyServerObject"), obj);
 
-			PrintWriter ps = new PrintWriter(new FileOutputStream(new File("hello-openorb-server.ior")));
+			PrintWriter ps = new PrintWriter(new FileOutputStream(new File("ior/hello-openorb-server.ior")));
 			ps.println(orb.object_to_string(obj));
 			ps.close();
 

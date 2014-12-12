@@ -32,14 +32,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <jdk.version>1.6</jdk.version>
+        <jacorb.version>3.5</jacorb.version>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>antlr</groupId>
-            <artifactId>antlr</artifactId>
-            <version>2.7.2</version>
-        </dependency>
         <dependency>
             <groupId>org.jacorb</groupId>
             <artifactId>jacorb</artifactId>
@@ -52,13 +48,18 @@
         </dependency>
         <dependency>
             <groupId>org.jacorb</groupId>
-            <artifactId>idl-compiler</artifactId>
-            <version>3.0</version>
+            <artifactId>jacorb-omgapi</artifactId>
+            <version>3.5</version>
         </dependency>
         <dependency>
-            <groupId>tanukisoft</groupId>
-            <artifactId>wrapper</artifactId>
-            <version>3.1.0</version>
+            <groupId>org.jacorb</groupId>
+            <artifactId>jacorb-idl-compiler</artifactId>
+            <version>3.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jacorb</groupId>
+            <artifactId>jacorb-parent</artifactId>
+            <version>3.5</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>

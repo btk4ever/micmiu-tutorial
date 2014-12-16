@@ -19,7 +19,7 @@ import org.omg.PortableServer.POAHelper;
 /**
  * EventChannel News Demo Client
  * 1. 启动NameService        服务: $JACORB_HOME/bin/ns -DOAPort=1234
- * 2. 启动NotificationService服务: $JACORB_HOME/bin/jaco  -port 4321 -printCorbaloc
+ * 2. 启动NotificationService服务: $JACORB_HOME/bin/nfty  -port 4321 -printCorbaloc
  * 3. 启动运行改程序 + 2个参数 如下:
  * -ORBInitRef NameService=corbaloc::127.0.0.1:1234/NameService
  * -ORBInitRef NotificationService=corbaloc::127.0.0.1:4321/NotificationService
